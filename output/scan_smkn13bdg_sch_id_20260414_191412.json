@@ -1,0 +1,114 @@
+{
+  "target": "smkn13bdg.sch.id",
+  "dns": {
+    "target": "smkn13bdg.sch.id",
+    "ipv4": [
+      "103.148.113.201"
+    ],
+    "ipv6": [
+      "::ffff:103.148.113.201"
+    ],
+    "hostname": null,
+    "findings": [],
+    "subdomains": []
+  },
+  "port_scan": {
+    "ip": "103.148.113.201",
+    "open_ports": [
+      22,
+      80,
+      443,
+      5432
+    ],
+    "findings": [
+      {
+        "port": 22,
+        "service": "SSH",
+        "risk": "INFO",
+        "note": ""
+      },
+      {
+        "port": 80,
+        "service": "HTTP",
+        "risk": "INFO",
+        "note": ""
+      },
+      {
+        "port": 443,
+        "service": "HTTPS",
+        "risk": "INFO",
+        "note": ""
+      },
+      {
+        "port": 5432,
+        "service": "PostgreSQL",
+        "risk": "INFO",
+        "note": ""
+      }
+    ]
+  },
+  "http": {
+    "target": "https://smkn13bdg.sch.id",
+    "status_code": 200,
+    "server": "nginx/1.18.0 (Ubuntu)",
+    "missing_headers": [
+      "Strict-Transport-Security",
+      "X-Frame-Options",
+      "Referrer-Policy"
+    ],
+    "cookies": [
+      {
+        "name": "frontend_lang",
+        "issues": [
+          "Secure flag tidak ada",
+          "HttpOnly flag tidak ada"
+        ]
+      },
+      {
+        "name": "session_id",
+        "issues": [
+          "Secure flag tidak ada"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "title": "Server Info Terekspose",
+        "detail": "Header menampilkan: nginx/1.18.0 (Ubuntu)",
+        "risk": "LOW"
+      },
+      {
+        "title": "Security Headers Tidak Lengkap",
+        "detail": "Header tidak ada: Strict-Transport-Security, X-Frame-Options, Referrer-Policy",
+        "risk": "MEDIUM"
+      },
+      {
+        "title": "Cookie Lemah: frontend_lang",
+        "detail": "Secure flag tidak ada, HttpOnly flag tidak ada",
+        "risk": "LOW"
+      },
+      {
+        "title": "Cookie Lemah: session_id",
+        "detail": "Secure flag tidak ada",
+        "risk": "LOW"
+      }
+    ],
+    "final_url": "https://smkn13bdg.sch.id/"
+  },
+  "paths": {
+    "found": [
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "risk": "HIGH",
+        "url": "https://smkn13bdg.sch.id/robots.txt"
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "risk": "HIGH",
+        "url": "https://smkn13bdg.sch.id/sitemap.xml"
+      }
+    ]
+  }
+}

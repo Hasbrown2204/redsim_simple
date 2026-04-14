@@ -1,0 +1,89 @@
+{
+  "target": "example.com",
+  "dns": {
+    "target": "example.com",
+    "ipv4": [
+      "172.66.147.243",
+      "104.20.23.154"
+    ],
+    "ipv6": [
+      "::ffff:104.20.23.154",
+      "::ffff:172.66.147.243"
+    ],
+    "hostname": null,
+    "findings": [],
+    "subdomains": [
+      {
+        "subdomain": "www.example.com",
+        "ips": [
+          "104.20.23.154",
+          "172.66.147.243"
+        ]
+      }
+    ]
+  },
+  "port_scan": {
+    "ip": "172.66.147.243",
+    "open_ports": [
+      80,
+      443,
+      8080,
+      8443
+    ],
+    "findings": [
+      {
+        "port": 80,
+        "service": "HTTP",
+        "risk": "INFO",
+        "note": ""
+      },
+      {
+        "port": 443,
+        "service": "HTTPS",
+        "risk": "INFO",
+        "note": ""
+      },
+      {
+        "port": 8080,
+        "service": "HTTP-Alt",
+        "risk": "INFO",
+        "note": ""
+      },
+      {
+        "port": 8443,
+        "service": "HTTPS-Alt",
+        "risk": "INFO",
+        "note": ""
+      }
+    ]
+  },
+  "http": {
+    "target": "https://example.com",
+    "status_code": 200,
+    "server": "cloudflare",
+    "missing_headers": [
+      "Strict-Transport-Security",
+      "Content-Security-Policy",
+      "X-Frame-Options",
+      "X-Content-Type-Options",
+      "Referrer-Policy"
+    ],
+    "cookies": [],
+    "findings": [
+      {
+        "title": "Server Info Terekspose",
+        "detail": "Header menampilkan: cloudflare",
+        "risk": "LOW"
+      },
+      {
+        "title": "Security Headers Tidak Lengkap",
+        "detail": "Header tidak ada: Strict-Transport-Security, Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy",
+        "risk": "MEDIUM"
+      }
+    ],
+    "final_url": "https://example.com/"
+  },
+  "paths": {
+    "found": []
+  }
+}
